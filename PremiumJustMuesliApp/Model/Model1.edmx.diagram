@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a69ad16fd8ef4d4d9edf2f8d8e4a44d5" Name="Diagram1">
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.Country" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.Ingredient" Width="1.5" PointX="5.25" PointY="13.875" />
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.Muesli" Width="1.5" PointX="5.25" PointY="8.875" />
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.MuesliIngredient" Width="1.5" PointX="7.5" PointY="9.625" />
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.MuesliMix" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.MuesliMixMuesli" Width="1.5" PointX="7.5" PointY="2.625" />
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.Order" Width="1.5" PointX="5.25" PointY="5.75" />
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.OrderMuesliMixes" Width="1.5" PointX="7.5" PointY="6.125" />
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.Type" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="JustMuesliDataBaseModel.User" Width="1.5" PointX="3" PointY="3.375" />
+        <AssociationConnector Association="JustMuesliDataBaseModel.FK_User_Country" />
+        <AssociationConnector Association="JustMuesliDataBaseModel.FK_MuesliIngredient_Ingredient" />
+        <AssociationConnector Association="JustMuesliDataBaseModel.FK_Muesli_Type" />
+        <AssociationConnector Association="JustMuesliDataBaseModel.FK_MuesliIngredient_Muesli" />
+        <AssociationConnector Association="JustMuesliDataBaseModel.FK_MuesliMixMuesli_Muesli" />
+        <AssociationConnector Association="JustMuesliDataBaseModel.FK_MuesliMix_User" />
+        <AssociationConnector Association="JustMuesliDataBaseModel.FK_MuesliMixMuesli_MuesliMix" />
+        <AssociationConnector Association="JustMuesliDataBaseModel.FK_OrderMuesliMixes_MuesliMix" />
+        <AssociationConnector Association="JustMuesliDataBaseModel.FK_Order_User" />
+        <AssociationConnector Association="JustMuesliDataBaseModel.FK_OrderMuesliMixes_Order" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

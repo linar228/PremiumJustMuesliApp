@@ -1,0 +1,31 @@
+﻿<Page x:Class="PremiumJustMuesliApp.Pages.MainMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PremiumJustMuesliApp.Pages"
+      xmlns:language="clr-namespace:PremiumJustMuesliApp.Properties.Langs"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainMenuPage">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <WrapPanel>
+                <RadioButton Checked="RBEnglishLanguage_Checked" Margin="5" x:Name="RBEnglishLanguage">English</RadioButton>
+                <RadioButton Checked="RBRussianLanguage_Checked" Margin="5" x:Name="RBRussianLanguage">Russia</RadioButton>
+            </WrapPanel>
+
+            <Button x:Name="BEditCustomerDetails" Click="BEditCustomerDetails_Click" Content="{x:Static language:Lang.editcustomerdetails}"/>
+            <Button x:Name="BMix" Click="BMix_Click"  Content="{x:Static language:Lang.mix}"/>
+            <Button x:Name="BMyMuesliMixes" Click="BMyMuesliMixes_Click"  Content="{x:Static language:Lang.mymueslimixes}"/>
+            <Button x:Name="BOrder" Click="BOrder_Click"  Content="{x:Static language:Lang.order}"/>
+            <Button x:Name="BExit" Click="BExit_Click"  Content="{x:Static language:Lang.exit}"/>
+        </StackPanel>
+    </Grid>
+</Page>
