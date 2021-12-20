@@ -4,3 +4,7 @@
 @{
 }
 <h1>Order</h1>
+@foreach (var o in MuesliCore.DBConnect.GetOrders())
+{
+    <p>@o.ID @o.UserID @o.TotalPrice</p>
+}

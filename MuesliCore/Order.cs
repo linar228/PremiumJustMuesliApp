@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MuesliCore
 {
-    class Order
+    public class Order
     {
         public int ID { get; set; }
         public int UserID { get; set; }

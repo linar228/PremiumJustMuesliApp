@@ -42,5 +42,13 @@ namespace MuesliCore
             return connection.Query<Muesli>($"select * from Muesli m where m.[TypeId] = {type.ID}").AsList();
             
         }
+        public static List<MuesliMix> GetMuesliMixes()
+        {
+            return connection.Query<MuesliMix>("select * from MuesliMix").AsList();
+        }
+        public static List<Order> GetOrders()
+        {
+            return connection.Query<Order>("select * from [Order]").AsList();
+        }
     }
 }
