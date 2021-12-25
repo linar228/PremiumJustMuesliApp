@@ -4,3 +4,7 @@
 @{
 }
 <h1>My mix</h1>
+@foreach (var mm in MuesliCore.DBConnect.GetMuesliMixes())
+{
+    <p>@mm.Name</p>
+}

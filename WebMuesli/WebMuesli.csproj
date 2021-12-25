@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MuesliCore\MuesliCore.csproj" />
+    <ProjectReference Include="..\CoreLibrary\CoreLibrary.csproj" />
   </ItemGroup>
 
 </Project>

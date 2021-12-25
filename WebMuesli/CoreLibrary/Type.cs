@@ -4,10 +4,9 @@ using System.Text;
 
 namespace MuesliCore
 {
-    public class Order
+    public class Type
     {
         public int ID { get; set; }
-        public int UserID { get; set; }
-        public float TotalPrice { get; set; }
+        public string Name { get; set; }
     }
 }

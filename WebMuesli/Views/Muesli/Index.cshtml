@@ -1,10 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-    
-*@
-@{
-}
-<h1>Muesli</h1>
+﻿<h1>Muesli</h1>
 <head>
 <style>
     body {
@@ -16,6 +10,7 @@
         overflow: hidden;
         border: 1px solid #ccc;
         background-color: #f1f1f1;
+        width: 100%;
     }
 
         /* Style the buttons inside the tab */
@@ -53,27 +48,49 @@
 
     <h2>Tabs</h2>
     <p>Click on the buttons inside the tabbed menu:</p>
+    <div style="display:flex">
+        <div>
+            <div class="tab">
+                @foreach (var t in MuesliCore.DBConnect.GetTypes())
+                {
+                    <button class="tablinks" onclick="openCity(event, '@t.Name')">@t.Name</button>
+                }
 
-    <div class="tab">
-        @foreach (var t in MuesliCore.DBConnect.GetTypes())
-        {
-        <button class="tablinks" onclick="openCity(event, '@t.Name')">@t.Name</button>
-        }
-
-    </div>
-    @foreach (var t in MuesliCore.DBConnect.GetTypes())
-    {
-        <div id="@t.Name" class="tabcontent">
-            <h3>@t.Name</h3>
-            @foreach (var m in MuesliCore.DBConnect.FindMuesliByType(t))
+            </div>
+            @foreach (var t in MuesliCore.DBConnect.GetTypes())
             {
-                <p>@m.NameEN <button>Add</button></p>
+                <div id="@t.Name" class="tabcontent">
+                    <h3>@t.Name</h3>
+                    @foreach (var m in MuesliCore.DBConnect.FindMuesliByType(t))
+                    {
+                        <p id="@t.Name">@m.NameEN <button onclick="Add('@t.Name inp','@m.NameEN')">Add</button></p>
+                    }
+
+                </div>
             }
-            
         </div>
-    }
+        <div>
+            <form style="display:flex; flex-direction:column; margin-left:50px;" asp-action="" asp-controller="">
+                <p>Name</p>
+                <input type="text" id="name"/>
+                @foreach (var t in MuesliCore.DBConnect.GetTypes())
+                {
+                    <p>@t.Name</p>
+                    <input type="text" id="@t.Name inp" disabled/>
+                }
+                <input type="submit" value="Добавить микс"/>
+            </form>
+        </div>
+        
+        
+    </div>
+    
+    
 
     <script>
+        function Add(name, value) {
+            document.getElementById(name).value = value;
+        }
         function openCity(evt, cityName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");

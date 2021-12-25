@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PremiumJustMuesliApp", "Pre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMuesli", "WebMuesli\WebMuesli.csproj", "{27D7CD5E-2C88-4A4C-9A13-EA781E240509}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuesliCore", "MuesliCore\MuesliCore.csproj", "{A795EE9A-1991-4997-B88F-6D68235BE962}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreLibrary", "CoreLibrary\CoreLibrary.csproj", "{510F6CF1-A830-4F64-9799-F596EC2F8DD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{27D7CD5E-2C88-4A4C-9A13-EA781E240509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27D7CD5E-2C88-4A4C-9A13-EA781E240509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27D7CD5E-2C88-4A4C-9A13-EA781E240509}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A795EE9A-1991-4997-B88F-6D68235BE962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A795EE9A-1991-4997-B88F-6D68235BE962}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A795EE9A-1991-4997-B88F-6D68235BE962}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A795EE9A-1991-4997-B88F-6D68235BE962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{510F6CF1-A830-4F64-9799-F596EC2F8DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{510F6CF1-A830-4F64-9799-F596EC2F8DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{510F6CF1-A830-4F64-9799-F596EC2F8DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{510F6CF1-A830-4F64-9799-F596EC2F8DD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
