@@ -23,38 +23,8 @@ namespace PremiumJustMuesliApp.Pages
         public MyMuesliMixesPage()
         {
             InitializeComponent();
-            this.DataContext = MainWindow.db.MuesliMix.Where(c => c.UserId == MainWindow.user.Id).ToList();
         }
-
-        private bool ValidateSelectedItem()
-        {
-            if (DGMyMuesliMixes.SelectedItem is null)
-            {
-                MessageBox.Show("Select Item");
-                return false;
-            }
-            return true;
-
-        }
-        private void BEdit_Click(object sender, RoutedEventArgs e)
-        {
-            if(ValidateSelectedItem())
-            {
-                NavigationService.Navigate(new MuesliMixerPage((Model.MuesliMix)DGMyMuesliMixes.SelectedItem));
-            }
-        }
-
-        private void BDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (ValidateSelectedItem())
-            {
-                Model.MuesliMix muesli = (Model.MuesliMix)DGMyMuesliMixes.SelectedItem;
-                MainWindow.db.MuesliMix.Remove(muesli);
-                MainWindow.db.SaveChanges();
-                this.DataContext = null;
-                this.DataContext = MainWindow.db.MuesliMix.Where(c => c.UserId == MainWindow.user.Id).ToList();
-            }
-        }
+        
         private void BBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

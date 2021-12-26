@@ -11,17 +11,13 @@
     <Page.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
     </Page.Resources>
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-
-            <WrapPanel>
-                <RadioButton Checked="RBEnglishLanguage_Checked" Margin="5" x:Name="RBEnglishLanguage">English</RadioButton>
-                <RadioButton Checked="RBRussianLanguage_Checked" Margin="5" x:Name="RBRussianLanguage">Russia</RadioButton>
-            </WrapPanel>
-
-            <Button x:Name="BEditCustomerDetails" Click="BEditCustomerDetails_Click" Content="{x:Static language:Lang.editcustomerdetails}"/>
             <Button x:Name="BMix" Click="BMix_Click"  Content="{x:Static language:Lang.mix}"/>
             <Button x:Name="BMyMuesliMixes" Click="BMyMuesliMixes_Click"  Content="{x:Static language:Lang.mymueslimixes}"/>
             <Button x:Name="BOrder" Click="BOrder_Click"  Content="{x:Static language:Lang.order}"/>

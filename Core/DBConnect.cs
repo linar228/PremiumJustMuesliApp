@@ -33,15 +33,6 @@ namespace MuesliCore
                 return false;
             }
         }
-        public static List<Type> GetTypes()
-        {
-            return connection.Query<Type>("select * from [dbo].[Type]").AsList();
-        }
-        public static List<Muesli> FindMuesliByType( Type type)
-        {
-            return connection.Query<Muesli>($"select * from Muesli m where m.[TypeId] = {type.ID}").AsList();
-            
-        }
         public static List<MuesliMix> GetMuesliMixes()
         {
             return connection.Query<MuesliMix>("select * from MuesliMix").AsList();
@@ -50,10 +41,22 @@ namespace MuesliCore
         {
             return connection.Query<Order>("select * from [Order]").AsList();
         }
+        public static Order GetOrder(int orderId)
+        {
+            try
+            {
+                return connection.Query<Order>($"select * from [Order] where [Id] = {orderId}").AsList()[0];
+            }
+            catch { return null; }
+        }
         public static void AddMuesli(Muesli m)
         {
-            connection.Query($"insert into MuesliMix ([Name],[CreatedDate],[Basics],[Cereal],[Fruit],[Nuts],[Choco],[Specials])" +
+            try
+            {
+                connection.Query($"insert into MuesliMix ([Name],[CreatedDate],[Basics],[Cereal],[Fruit],[Nuts],[Choco],[Specials])" +
                 $" values ('{m.Name}', '{DateTime.Now}','{m.Basics}','{m.Cereal}','{m.Fruit}','{m.Nuts}','{m.Choco}','{m.Specials}')");
+            }
+            catch { }
         }
         public static List<Ingredient> GetBasics()
         {
@@ -81,8 +84,12 @@ namespace MuesliCore
         }
         public static void CreateOrder(MuesliMix mix)
         {
-            connection.Query("insert into [order] (totalprice, orderdate, mixId) " +
+            try
+            {
+                connection.Query("insert into [order] (totalprice, orderdate, mixId) " +
                              $"values({mix.Price}, '{DateTime.Now}', {mix.ID})");
+            }
+            catch { }
         }
         public static void RemoveOrder(int orderId)
         {
@@ -91,6 +98,15 @@ namespace MuesliCore
         public static void RemoveMix(int mixId)
         {
             connection.Query($"delete [dbo].[MuesliMix] where [Id] = {mixId}");
+        }
+        public static MuesliMix GetMuesliMix(int mixId)
+        {
+            try
+            {
+                return connection.Query<MuesliMix>($"select * from MuesliMix where [Id] = {mixId}").AsList()[0];
+            }
+            catch { return null; }
+            
         }
     }
 }

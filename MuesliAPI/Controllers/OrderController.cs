@@ -11,20 +11,21 @@ namespace MuesliAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MuesliController : ControllerBase
+    public class OrderController : ControllerBase
     {
+
         // GET: api/<MuesliController>
         [HttpGet]
-        public IEnumerable<MuesliMix> Get()
+        public IEnumerable<Order> Get()
         {
-            return DBConnect.GetMuesliMixes();
+            return DBConnect.GetOrders();
         }
 
         // GET api/<MuesliController>/5
         [HttpGet("{id}")]
-        public ActionResult<MuesliMix> Get(int id)
+        public ActionResult<Order> Get(int id)
         {
-            var result = DBConnect.GetMuesliMix(id);
+            var result = DBConnect.GetOrder(id);
             if (result == null)
                 return NotFound();
 
@@ -33,9 +34,9 @@ namespace MuesliAPI.Controllers
 
         // POST api/<MuesliController>
         [HttpPost]
-        public IActionResult Post(MuesliMix mix)
+        public IActionResult Post(Muesli mix)
         {
-            DBConnect.CreateOrder(mix);
+            DBConnect.AddMuesli(mix);
             return NoContent();
         }
 
@@ -43,7 +44,7 @@ namespace MuesliAPI.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            DBConnect.RemoveOrder(id);
+            DBConnect.RemoveMix(id);
             return NoContent();
         }
     }

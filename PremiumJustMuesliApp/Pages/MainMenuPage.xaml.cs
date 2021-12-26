@@ -23,16 +23,7 @@ namespace PremiumJustMuesliApp.Pages
         public MainMenuPage()
         {
             InitializeComponent();
-            if (Properties.Settings.Default.languageCode == "en-US")
-            {
-                RBEnglishLanguage.IsChecked = true;
-            }
-            else
-            {
-                RBRussianLanguage.IsChecked = true;
-            }
         }
-        bool firstChecked = false;
 
         private void BOrder_Click(object sender, RoutedEventArgs e)
         {
@@ -56,30 +47,6 @@ namespace PremiumJustMuesliApp.Pages
         private void BExit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void RBEnglishLanguage_Checked(object sender, RoutedEventArgs e)
-        {
-            if (firstChecked != false)
-            {
-                Properties.Settings.Default.languageCode = "en-US";
-                Properties.Settings.Default.Save();
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                Application.Current.Shutdown();
-            }
-            firstChecked = true;
-        }
-
-        private void RBRussianLanguage_Checked(object sender, RoutedEventArgs e)
-        {
-            if (firstChecked != false)
-            {
-                Properties.Settings.Default.languageCode = "ru-RU";
-                Properties.Settings.Default.Save();
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                Application.Current.Shutdown();
-            }
-            firstChecked = true;
         }
     }
 }

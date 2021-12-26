@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MuesliCore;
+using Dapper;
+using MuesliCore.ViewModels;
 
 namespace PremiumJustMuesliApp.Pages
 {
@@ -27,16 +30,16 @@ namespace PremiumJustMuesliApp.Pages
 
         private void BAuthorzationPage_Click(object sender, RoutedEventArgs e)
         {
-            List<Model.User> allUsers = MainWindow.db.User.ToList();
-            Model.User user = allUsers.FirstOrDefault(c => c.Login == TBLogin.Text && c.Password == PBPassword.Password);
-
-            if(user is null)
+            if (DBConnect.IsLoginCorrect(new LoginModel() {Email = TBLogin.Text,Password = PBPassword.Password }))
+            {
+                NavigationService.Navigate(new MainMenuPage());
+            }
+            else
             {
                 MessageBox.Show("Unkown User");
                 return;
             }
-            MainWindow.user = user;
-            NavigationService.Navigate(new MainMenuPage());
+            
         }
     }
 }

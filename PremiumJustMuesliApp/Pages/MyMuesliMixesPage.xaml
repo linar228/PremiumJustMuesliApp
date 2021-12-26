@@ -29,8 +29,8 @@
         </DataGrid>
         <Button HorizontalAlignment="Left" Grid.Row="0" x:Name="BBack" Click="BBack_Click" Content="Back"/>
         <WrapPanel HorizontalAlignment="Center" Grid.Row="2">
-            <Button x:Name="BEdit" Click="BEdit_Click" Content="Edit"/>
-            <Button x:Name="BDelete" Click="BDelete_Click" Content="Delete"/>
+            <Button x:Name="BEdit"  Content="Edit"/>
+            <Button x:Name="BDelete"  Content="Delete"/>
         </WrapPanel>
     </Grid>
 </Page>
