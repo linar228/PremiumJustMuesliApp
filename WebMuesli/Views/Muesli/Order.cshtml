@@ -1,10 +1,21 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
 <h1>Order</h1>
-@foreach (var o in MuesliCore.DBConnect.GetOrders())
-{
-    <p>@o.ID @o.UserID @o.TotalPrice</p>
-}
+<form  method="post">
+    <table style="width:60%">
+        <tr>
+            <th>№ заказа</th>
+            <th>Дата заказа</th>
+            <th>Сумма</th>
+            <th></th>
+        </tr>
+        @foreach (var o in MuesliCore.DBConnect.GetOrders())
+        {
+            <tr>
+                <td>@o.ID</td>
+                <td>@o.OrderDate</td>
+                <td>@o.TotalPrice</td>
+                <td><a asp-controller="Muesli" asp-action="RemoveOrder" asp-route-orderId="@o.ID">❌</a></td>
+            </tr>
+        }
+    </table>
+</form>

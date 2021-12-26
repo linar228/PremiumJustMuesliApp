@@ -9,7 +9,7 @@ using MuesliCore.ViewModels;
 
 namespace MuesliCore
 {
-    public class DBConnect
+    public static class DBConnect
     {
         private static string connStr = ConfigurationManager.ConnectionStrings["MuesliDB"].ConnectionString;
         private static IDbConnection connection = new SqlConnection(connStr);
@@ -49,6 +49,48 @@ namespace MuesliCore
         public static List<Order> GetOrders()
         {
             return connection.Query<Order>("select * from [Order]").AsList();
+        }
+        public static void AddMuesli(Muesli m)
+        {
+            connection.Query($"insert into MuesliMix ([Name],[CreatedDate],[Basics],[Cereal],[Fruit],[Nuts],[Choco],[Specials])" +
+                $" values ('{m.Name}', '{DateTime.Now}','{m.Basics}','{m.Cereal}','{m.Fruit}','{m.Nuts}','{m.Choco}','{m.Specials}')");
+        }
+        public static List<Ingredient> GetBasics()
+        {
+            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 1").AsList();
+        }
+        public static List<Ingredient> GetCereals()
+        {
+            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 2").AsList();
+        }
+        public static List<Ingredient> GetFruits()
+        {
+            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 3").AsList();
+        }
+        public static List<Ingredient> GetNuts()
+        {
+            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 4").AsList();
+        }
+        public static List<Ingredient> GetChocos()
+        {
+            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 5").AsList();
+        }
+        public static List<Ingredient> GetSpecials()
+        {
+            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 6").AsList();
+        }
+        public static void CreateOrder(MuesliMix mix)
+        {
+            connection.Query("insert into [order] (totalprice, orderdate, mixId) " +
+                             $"values({mix.Price}, '{DateTime.Now}', {mix.ID})");
+        }
+        public static void RemoveOrder(int orderId)
+        {
+            connection.Query($"delete [dbo].[Order] where [Id] = {orderId}");
+        }
+        public static void RemoveMix(int mixId)
+        {
+            connection.Query($"delete [dbo].[MuesliMix] where [Id] = {mixId}");
         }
     }
 }

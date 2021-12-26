@@ -1,108 +1,55 @@
-﻿<h1>Muesli</h1>
-<head>
-<style>
-    body {
-        font-family: Arial;
-    }
+﻿@using MuesliCore;
+@model MuesliCore.Muesli;
+<h2>Mixer</h2>
 
-    /* Style the tab */
-    .tab {
-        overflow: hidden;
-        border: 1px solid #ccc;
-        background-color: #f1f1f1;
-        width: 100%;
-    }
-
-        /* Style the buttons inside the tab */
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            font-size: 17px;
-        }
-
-            /* Change background color of buttons on hover */
-            .tab button:hover {
-                background-color: #ddd;
-            }
-
-            /* Create an active/current tablink class */
-            .tab button.active {
-                background-color: #ccc;
-            }
-
-    /* Style the tab content */
-    .tabcontent {
-        display: none;
-        padding: 6px 12px;
-        border: 1px solid #ccc;
-        border-top: none;
-    }
-</style>
-</head>
-<body>
-
-    <h2>Tabs</h2>
-    <p>Click on the buttons inside the tabbed menu:</p>
-    <div style="display:flex">
-        <div>
-            <div class="tab">
-                @foreach (var t in MuesliCore.DBConnect.GetTypes())
-                {
-                    <button class="tablinks" onclick="openCity(event, '@t.Name')">@t.Name</button>
-                }
-
-            </div>
-            @foreach (var t in MuesliCore.DBConnect.GetTypes())
+<form asp-action="AddMix" asp-controller="Muesli">
+    <div class="container" style="display:flex;flex-direction:column">
+        <label>Name</label>
+        <input type="text" required asp-for="Name"/>
+        <label for="pet-select">Basics</label>
+        <select asp-for="Basics">
+            @foreach (var i in DBConnect.GetBasics())
             {
-                <div id="@t.Name" class="tabcontent">
-                    <h3>@t.Name</h3>
-                    @foreach (var m in MuesliCore.DBConnect.FindMuesliByType(t))
-                    {
-                        <p id="@t.Name">@m.NameEN <button onclick="Add('@t.Name inp','@m.NameEN')">Add</button></p>
-                    }
-
-                </div>
+                <option value=@i.ID>@i.Name</option>
             }
-        </div>
-        <div>
-            <form style="display:flex; flex-direction:column; margin-left:50px;" asp-action="" asp-controller="">
-                <p>Name</p>
-                <input type="text" id="name"/>
-                @foreach (var t in MuesliCore.DBConnect.GetTypes())
-                {
-                    <p>@t.Name</p>
-                    <input type="text" id="@t.Name inp" disabled/>
-                }
-                <input type="submit" value="Добавить микс"/>
-            </form>
-        </div>
-        
-        
+        </select>
+        <label>Cereal</label>
+        <select asp-for="Cereal">
+            @foreach (var i in DBConnect.GetCereals())
+            {
+                <option value=@i.ID>@i.Name</option>
+            }
+        </select>
+        <label>Fruit</label>
+        <select asp-for="Fruit">
+            @foreach (var i in DBConnect.GetFruits())
+            {
+                <option value=@i.ID>@i.Name</option>
+            }
+        </select>
+        <label>Nuts</label>
+        <select asp-for="Nuts">
+            @foreach (var i in DBConnect.GetNuts())
+            {
+                <option value=@i.ID>@i.Name</option>
+            }
+        </select>
+        <label>Choco</label>
+        <select asp-for="Choco">
+            @foreach (var i in DBConnect.GetChocos())
+            {
+                <option value=@i.ID>@i.Name</option>
+            }
+        </select>
+        <label>Specials</label>
+        <select asp-for="Specials">
+            @foreach (var i in DBConnect.GetSpecials())
+            {
+                <option value=@i.ID>@i.Name</option>
+            }
+        </select>
+        <input type="submit" value="Добавить микс"/>
     </div>
     
-    
+</form>
 
-    <script>
-        function Add(name, value) {
-            document.getElementById(name).value = value;
-        }
-        function openCity(evt, cityName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
-</body>

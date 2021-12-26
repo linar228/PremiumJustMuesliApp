@@ -1,10 +1,15 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
+@model MuesliCore.MuesliMix;
+ 
 <h1>My mix</h1>
-@foreach (var mm in MuesliCore.DBConnect.GetMuesliMixes())
-{
-    <p>@mm.Name</p>
-}
+<form asp-action="AddOrder" asp-controller="Muesli" method="post">
+    <div style="justify-content:center">
+        @foreach (var mm in MuesliCore.DBConnect.GetMuesliMixes())
+        {
+            <input type="radio" asp-for="ID" value="@mm.ID" required>
+            <input type="hidden" asp-for="Price" value="@mm.Price" />
+            <label>@mm.Name</label><a asp-controller="Muesli" asp-action="RemoveMix" asp-route-mixId="@mm.ID">❌</a><br />
+        }
+    </div>
+    <button type="submit">Заказать</button>
+</form>
