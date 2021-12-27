@@ -45,7 +45,7 @@ namespace MuesliAPI.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            DBConnect.RemoveOrder(id);
+            DBConnect.RemoveMix(id);
             return NoContent();
         }
     }
