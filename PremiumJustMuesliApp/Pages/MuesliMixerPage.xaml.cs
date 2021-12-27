@@ -59,6 +59,7 @@ namespace PremiumJustMuesliApp.Pages
                     (CbSpecials.SelectedItem as Ingredient).ID
                 }
             });
+            MessageBox.Show("Микс добавлен");
         }
     }
 }

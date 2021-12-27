@@ -32,6 +32,7 @@ namespace PremiumJustMuesliApp.Pages
             if (DGMyOrders.SelectedItem != null)
             {
                 DBConnect.RemoveOrder((DGMyOrders.SelectedItem as Order).ID);
+                MessageBox.Show("Заказ удален");
             }
             NavigationService.Navigate(new OrderPage());
         }

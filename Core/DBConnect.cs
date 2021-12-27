@@ -45,30 +45,6 @@ namespace MuesliCore
             }
             catch { }
         }
-        public static List<Ingredient> GetBasics()
-        {
-            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 1").AsList();
-        }
-        public static List<Ingredient> GetCereals()
-        {
-            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 2").AsList();
-        }
-        public static List<Ingredient> GetFruits()
-        {
-            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 3").AsList();
-        }
-        public static List<Ingredient> GetNuts()
-        {
-            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 4").AsList();
-        }
-        public static List<Ingredient> GetChocos()
-        {
-            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 5").AsList();
-        }
-        public static List<Ingredient> GetSpecials()
-        {
-            return connection.Query<Ingredient>("select * from Muesli where[TypeId] = 6").AsList();
-        }
         public static void CreateOrder(MuesliMix mix)
         {
             try

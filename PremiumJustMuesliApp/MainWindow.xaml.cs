@@ -21,8 +21,6 @@ namespace PremiumJustMuesliApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Model.User user = null;
-        public static Model.JustMuesliDataBaseEntities1 db = new Model.JustMuesliDataBaseEntities1();
         public MainWindow()
         {
             InitializeComponent();

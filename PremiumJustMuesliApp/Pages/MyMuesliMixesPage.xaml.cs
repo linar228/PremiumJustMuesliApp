@@ -29,7 +29,7 @@ namespace PremiumJustMuesliApp.Pages
         
         private void BBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new MainMenuPage());
         }
 
         private void BOrder_Click(object sender, RoutedEventArgs e)
@@ -37,6 +37,7 @@ namespace PremiumJustMuesliApp.Pages
             if (DGMyMuesliMixes.SelectedItem != null)
             {
                 DBConnect.CreateOrder(DGMyMuesliMixes.SelectedItem as MuesliMix);
+                MessageBox.Show("Заказ оформлен");
             }
         }
 
@@ -45,8 +46,9 @@ namespace PremiumJustMuesliApp.Pages
             if (DGMyMuesliMixes.SelectedItem != null)
             {
                 DBConnect.RemoveMix((DGMyMuesliMixes.SelectedItem as MuesliMix).ID);
+                MessageBox.Show("Микс удален");
             }
             NavigationService.Navigate(new MyMuesliMixesPage());
-        }
+        }   
     }
 }
