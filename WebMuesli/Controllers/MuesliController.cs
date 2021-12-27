@@ -12,7 +12,7 @@ namespace WebMuesli.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new MixModel());
         }
         public IActionResult MyMix()
         {
@@ -23,9 +23,9 @@ namespace WebMuesli.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddMix(Muesli muesli)
+        public IActionResult AddMix(MixModel mix)
         {
-            DBConnect.AddMuesli(muesli);
+            DBConnect.AddMuesliMix(mix);
             return RedirectToAction("Index");
         }
         [HttpPost]

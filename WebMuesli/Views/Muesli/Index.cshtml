@@ -1,55 +1,21 @@
 ﻿@using MuesliCore;
-@model MuesliCore.Muesli;
+@model MuesliCore.ViewModels.MixModel;
 <h2>Mixer</h2>
 
 <form asp-action="AddMix" asp-controller="Muesli">
     <div class="container" style="display:flex;flex-direction:column">
         <label>Name</label>
         <input type="text" required asp-for="Name"/>
-        <label for="pet-select">Basics</label>
-        <select asp-for="Basics">
-            @foreach (var i in DBConnect.GetBasics())
-            {
-                <option value=@i.ID>@i.Name</option>
-            }
-        </select>
-        <label>Cereal</label>
-        <select asp-for="Cereal">
-            @foreach (var i in DBConnect.GetCereals())
-            {
-                <option value=@i.ID>@i.Name</option>
-            }
-        </select>
-        <label>Fruit</label>
-        <select asp-for="Fruit">
-            @foreach (var i in DBConnect.GetFruits())
-            {
-                <option value=@i.ID>@i.Name</option>
-            }
-        </select>
-        <label>Nuts</label>
-        <select asp-for="Nuts">
-            @foreach (var i in DBConnect.GetNuts())
-            {
-                <option value=@i.ID>@i.Name</option>
-            }
-        </select>
-        <label>Choco</label>
-        <select asp-for="Choco">
-            @foreach (var i in DBConnect.GetChocos())
-            {
-                <option value=@i.ID>@i.Name</option>
-            }
-        </select>
-        <label>Specials</label>
-        <select asp-for="Specials">
-            @foreach (var i in DBConnect.GetSpecials())
-            {
-                <option value=@i.ID>@i.Name</option>
-            }
-        </select>
-        <input type="submit" value="Добавить микс"/>
+        @for (int i = 0; i < Model.Types.Count; i++)
+        {
+            <label>@Model.Types[i].Name</label>
+            <select asp-for="Ingredients[i]">
+                @foreach (var j in DBConnect.GetIngredientsByType(i + 1))
+                {
+                    <option value=@j.ID>@j.Name</option>
+                }
+            </select>
+        }
+        <input type="submit" value="Добавить микс" />
     </div>
-    
 </form>
-

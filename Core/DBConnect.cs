@@ -14,25 +14,6 @@ namespace MuesliCore
         private static string connStr = ConfigurationManager.ConnectionStrings["MuesliDB"].ConnectionString;
         private static IDbConnection connection = new SqlConnection(connStr);
 
-        public static bool IsLoginCorrect(LoginModel model)
-        {
-            return connection.Query<User>("SELECT * FROM [dbo].[User] u " +
-                                            $"where u.[Login] = '{model.Email}'" +
-                                            $"and u.[Password] = '{model.Password}'").AsList().Count > 0;
-        }
-        public static bool RegisterUser(RegisterModel model)
-        {
-            try
-            {
-                connection.Query($"insert into [dbo].[User] (Email, [Password]) " +
-                    $"values('{model.Email}', '{model.Password}')");
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
         public static List<MuesliMix> GetMuesliMixes()
         {
             return connection.Query<MuesliMix>("select * from MuesliMix").AsList();
@@ -49,12 +30,18 @@ namespace MuesliCore
             }
             catch { return null; }
         }
-        public static void AddMuesli(Muesli m)
+        public static void AddMuesliMix(MixModel m)
         {
             try
             {
-                connection.Query($"insert into MuesliMix ([Name],[CreatedDate],[Basics],[Cereal],[Fruit],[Nuts],[Choco],[Specials])" +
-                $" values ('{m.Name}', '{DateTime.Now}','{m.Basics}','{m.Cereal}','{m.Fruit}','{m.Nuts}','{m.Choco}','{m.Specials}')");
+                connection.Query($"insert into [dbo].[MuesliMix] ([Name],[CreatedDate])" +
+                $" values ('{m.Name}', '{DateTime.Now}')");
+                int mixId = connection.Query<int>("select max(Id) from MuesliMix").AsList()[0];
+                foreach (var i in m.Ingredients)
+                {
+                    connection.Query($"insert into MuesliMixIngredient ([MuesliMixId], [MuesliId]) values ({mixId}, {i})");
+                }
+                
             }
             catch { }
         }
@@ -107,6 +94,14 @@ namespace MuesliCore
             }
             catch { return null; }
             
+        }
+        public static List<Type> GetTypes()
+        {
+            return connection.Query<Type>("select * from type").AsList();
+        }
+        public static List<Ingredient> GetIngredientsByType(int typeId)
+        {
+            return connection.Query<Ingredient>($"select * from Ingredient where TypeId = {typeId}").AsList();
         }
     }
 }
