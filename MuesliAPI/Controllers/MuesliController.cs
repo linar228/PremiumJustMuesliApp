@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MuesliCore;
+using MuesliCore.ViewModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -35,7 +36,8 @@ namespace MuesliAPI.Controllers
         [HttpPost]
         public IActionResult Post(MuesliMix mix)
         {
-            DBConnect.CreateOrder(mix);
+            DBConnect.AddMuesliMix(new MixModel() { MixId = mix.ID, Name = mix.Name });
+            
             return NoContent();
         }
 

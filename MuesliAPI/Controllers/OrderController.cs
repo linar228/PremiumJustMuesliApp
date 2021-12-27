@@ -37,7 +37,7 @@ namespace MuesliAPI.Controllers
         [HttpPost]
         public IActionResult Post(MuesliMix mix)
         {
-            DBConnect.AddMuesliMix(new MixModel() {MixId = mix.ID, Name = mix.Name });
+            DBConnect.CreateOrder(mix);
             return NoContent();
         }
 
