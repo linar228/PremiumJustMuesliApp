@@ -23,14 +23,12 @@
         <DataGrid Grid.Row="1" ItemsSource="{Binding}" Margin="5" x:Name="DGMyMuesliMixes" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Width="auto" Header="Price/600g" Binding="{Binding Price}"/>
-                <DataGridTextColumn Width="auto" Header="Created on" Binding="{Binding CreatedDate}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button HorizontalAlignment="Left" Grid.Row="0" x:Name="BBack" Click="BBack_Click" Content="Back"/>
         <WrapPanel HorizontalAlignment="Center" Grid.Row="2">
-            <Button x:Name="BEdit"  Content="Edit"/>
-            <Button x:Name="BDelete"  Content="Delete"/>
+            <Button x:Name="BOrder"  Content="Order" Click="BOrder_Click"/>
+            <Button x:Name="BDelete"  Content="Delete" Click="BDelete_Click"/>
         </WrapPanel>
     </Grid>
 </Page>

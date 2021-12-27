@@ -20,61 +20,69 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-            <TextBox />
-            <ComboBox  ItemsSource="{Binding devices}" x:Name="CbDevice">
+            <TextBlock Text="Name"/>
+            <TextBox x:Name="tbName"/>
+            <TextBlock Text="Basics"/>
+            <ComboBox  ItemsSource="{Binding Basics}" x:Name="CbBasics" SelectedIndex="0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding DeviceName}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox  ItemsSource="{Binding devices}" >
+            <TextBlock Text="Cereal"/>
+            <ComboBox  ItemsSource="{Binding Cereal}" x:Name="CbCereal" SelectedIndex="0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding DeviceName}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox ItemsSource="{Binding devices}">
+            <TextBlock Text="Fruit"/>
+            <ComboBox ItemsSource="{Binding Fruit}" x:Name="CbFruit" SelectedIndex="0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding DeviceName}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox ItemsSource="{Binding devices}">
+            <TextBlock Text="Nuts"/>
+            <ComboBox ItemsSource="{Binding Nuts}" x:Name="CbNuts" SelectedIndex="0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding DeviceName}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox ItemsSource="{Binding devices}">
+            <TextBlock Text="Choco"/>
+            <ComboBox ItemsSource="{Binding Choco}" x:Name="CbChoco" SelectedIndex="0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding DeviceName}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox ItemsSource="{Binding devices}">
+            <TextBlock Text="Specials"/>
+            <ComboBox ItemsSource="{Binding Specials}" x:Name="CbSpecials" SelectedIndex="0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding DeviceName}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <Button x:Name="BtnAdd" Content="Добавить микс" Click="BtnAdd_Click"/>
         </StackPanel>
         <Button x:Name="BtnBack" Click="BtnBack_Click" Content="Back" FontSize="20" Height="30"/>
 

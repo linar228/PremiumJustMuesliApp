@@ -39,11 +39,6 @@ namespace PremiumJustMuesliApp.Pages
         {
             NavigationService.Navigate(new MuesliMixerPage());
         }
-
-        private void BEditCustomerDetails_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new EditCustomerDetailsPage());
-        }
         private void BExit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

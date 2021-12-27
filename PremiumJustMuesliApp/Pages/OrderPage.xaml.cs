@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MuesliCore;
 
 namespace PremiumJustMuesliApp.Pages
 {
@@ -23,37 +24,21 @@ namespace PremiumJustMuesliApp.Pages
         public OrderPage()
         {
             InitializeComponent();
+            DGMyOrders.ItemsSource = DBConnect.GetOrders();
+            this.DataContext = this;
         }
-        private void BSubmitOrder_Click(object sender, RoutedEventArgs e)
+        private void BDeleteOrder_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (DGMyOrders.SelectedItem != null)
+            {
+                DBConnect.RemoveOrder((DGMyOrders.SelectedItem as Order).ID);
+            }
+            NavigationService.Navigate(new OrderPage());
         }
-        private void LVOrderMuesliMix_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
-        private void RefreshCost()
-        {
-            
-        }
         private void BBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            
+            NavigationService.Navigate(new MainMenuPage());
         }
     }
 }

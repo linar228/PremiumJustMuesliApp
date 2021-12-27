@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MuesliCore;
 
 namespace PremiumJustMuesliApp.Pages
 {
@@ -23,11 +24,29 @@ namespace PremiumJustMuesliApp.Pages
         public MyMuesliMixesPage()
         {
             InitializeComponent();
+            DGMyMuesliMixes.ItemsSource = DBConnect.GetMuesliMixes();
         }
         
         private void BBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void BOrder_Click(object sender, RoutedEventArgs e)
+        {
+            if (DGMyMuesliMixes.SelectedItem != null)
+            {
+                DBConnect.CreateOrder(DGMyMuesliMixes.SelectedItem as MuesliMix);
+            }
+        }
+
+        private void BDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (DGMyMuesliMixes.SelectedItem != null)
+            {
+                DBConnect.RemoveMix((DGMyMuesliMixes.SelectedItem as MuesliMix).ID);
+            }
+            NavigationService.Navigate(new MyMuesliMixesPage());
         }
     }
 }

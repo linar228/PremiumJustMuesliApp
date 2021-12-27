@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MuesliCore;
+using MuesliCore.ViewModels;
 
 namespace PremiumJustMuesliApp.Pages
 {
@@ -23,11 +25,40 @@ namespace PremiumJustMuesliApp.Pages
         public MuesliMixerPage()
         {
             InitializeComponent();
+            CbBasics.ItemsSource = DBConnect.GetIngredientsByType(1);
+            CbCereal.ItemsSource = DBConnect.GetIngredientsByType(2);
+            CbChoco.ItemsSource = DBConnect.GetIngredientsByType(3);
+            CbFruit.ItemsSource = DBConnect.GetIngredientsByType(4);
+            CbNuts.ItemsSource = DBConnect.GetIngredientsByType(5);
+            CbSpecials.ItemsSource = DBConnect.GetIngredientsByType(6);
+            this.DataContext = this;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbName.Text == "")
+            {
+                MessageBox.Show("Введите название микса");
+                return;
+            }
+            DBConnect.AddMuesliMix(new MixModel() 
+            {
+                Name = tbName.Text,
+                Ingredients = new int[6] 
+                {
+                    (CbBasics.SelectedItem as Ingredient).ID,
+                    (CbCereal.SelectedItem as Ingredient).ID,
+                    (CbFruit.SelectedItem as Ingredient).ID,
+                    (CbNuts.SelectedItem as Ingredient).ID,
+                    (CbChoco.SelectedItem as Ingredient).ID,
+                    (CbSpecials.SelectedItem as Ingredient).ID
+                }
+            });
         }
     }
 }

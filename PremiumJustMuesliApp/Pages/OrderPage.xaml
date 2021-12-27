@@ -28,62 +28,16 @@
         </Grid.RowDefinitions>
         <Button x:Name="BBack" Click="BBack_Click" Margin="5" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Back"/>
 
-        <ListView ItemsSource="{Binding}" SelectionChanged="LVOrderMuesliMix_SelectionChanged" HorizontalContentAlignment="Stretch" Grid.Row="1" Grid.Column="0" Margin="5" x:Name="LVOrderMuesliMix">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderThickness="2" BorderBrush="Gray">
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0">
-                                <TextBlock FontWeight="Bold" Text="{Binding Name}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1">
-                                <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"  Content="XXL Size" IsChecked="{Binding SizeXXL}"/>
-                                <WrapPanel>
-                                    <TextBlock Text="Quantity "/>
-                                    <TextBox TextChanged="TextBox_TextChanged"  Margin="5" Text="{Binding Quantity}"/>
-                                </WrapPanel>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2">
-                                <WrapPanel>
-                                    <TextBlock Text="Price: "/>
-                                    <TextBlock Text="{Binding Price}"/>
-                                </WrapPanel>
-                                <WrapPanel>
-                                    <TextBlock Text="Total: "/>
-                                    <TextBlock Text="{Binding TotalPrice}"/>
-                                </WrapPanel>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding}" Margin="5" x:Name="DGMyOrders" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="№ заказа" Binding="{Binding ID}"/> 		
+                <DataGridTextColumn Width="*" Header="Дата заказа" Binding="{Binding OrderDate}"/>
+                <DataGridTextColumn Width="*" Header="Сумма" Binding="{Binding TotalPrice}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Border Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" BorderBrush="Gray" BorderThickness="1">
-            <StackPanel Grid.Row="1" Grid.Column="1">
-                <WrapPanel HorizontalAlignment="Center">
-                    <TextBlock Text="Muesli"/>
-                    <TextBox IsEnabled="False" x:Name="TBMuesliCost"/>
-                </WrapPanel>
-                <WrapPanel>
-                    <TextBlock Text="Shipping"/>
-                    <TextBox IsEnabled="False" x:Name="TBShippingCost"/>
-                </WrapPanel>
-                <WrapPanel>
-                    <TextBlock Text="Taxes"/>
-                    <TextBox IsEnabled="False" x:Name="TBTaxesCost"/>
-                </WrapPanel>
-                <WrapPanel>
-                    <TextBlock Text="Grand Total"/>
-                    <TextBox IsEnabled="False" x:Name="TBGrandTotalCost"/>
-                </WrapPanel>
-            </StackPanel>
+            
         </Border>
-        <Button Margin="10" Width="150" Height="50" x:Name="BSubmitOrder" Click="BSubmitOrder_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Submit Order" Grid.Column="1" Grid.Row="1"/>
+        <Button Margin="10" Width="150" Height="50" x:Name="BDeleteOrder" Click="BDeleteOrder_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Submit Order" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Page>
