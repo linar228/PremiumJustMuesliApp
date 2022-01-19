@@ -9,6 +9,7 @@ using MuesliCore.ViewModels;
 
 namespace MuesliCore
 {
+    //Запросы в коде - нужно исправить
     public static class DBConnect
     {
         private static string connStr = ConfigurationManager.ConnectionStrings["MuesliDB"].ConnectionString;
@@ -30,7 +31,7 @@ namespace MuesliCore
             }
             catch { return null; }
         }
-        public static void AddMuesliMix(MixModel m)
+        public static void AddMuesliMix(MixModel m)     //Следует исправить название переменной - можно лучше
         {
             try
             {

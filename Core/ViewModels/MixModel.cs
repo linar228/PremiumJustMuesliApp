@@ -8,7 +8,7 @@ namespace MuesliCore.ViewModels
     {
         public int MixId { get; set; }
         public string Name { get; set; }
-        public int[] Ingredients { get; set; } = new int[6];
+        public int[] Ingredients { get; set; } = new int[6];    //Определение свойства в классе - можно лучше
         public List<Type> Types { get; set; } = DBConnect.GetTypes();    
 
     }

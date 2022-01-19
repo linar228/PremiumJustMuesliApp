@@ -8,6 +8,7 @@ using MuesliCore;
 
 namespace WebMuesli.Controllers
 {
+    //Отличное решение - ничего лишнего в контроллере
     public class MuesliController : Controller
     {
         public IActionResult Index()

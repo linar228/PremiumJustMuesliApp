@@ -25,6 +25,7 @@ namespace PremiumJustMuesliApp.Pages
         public MuesliMixerPage()
         {
             InitializeComponent();
+            //Дублирование кода - нужно исправить
             CbBasics.ItemsSource = DBConnect.GetIngredientsByType(1);
             CbCereal.ItemsSource = DBConnect.GetIngredientsByType(2);
             CbChoco.ItemsSource = DBConnect.GetIngredientsByType(3);
@@ -41,6 +42,7 @@ namespace PremiumJustMuesliApp.Pages
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
+            // Проверка полноты данных - Хорошее решение
             if (tbName.Text == "")
             {
                 MessageBox.Show("Введите название микса");

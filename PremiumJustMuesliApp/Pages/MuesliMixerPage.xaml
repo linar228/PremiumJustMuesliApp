@@ -23,7 +23,7 @@
             <TextBlock Text="Name"/>
             <TextBox x:Name="tbName"/>
             <TextBlock Text="Basics"/>
-            <ComboBox  ItemsSource="{Binding Basics}" x:Name="CbBasics" SelectedIndex="0">
+            <ComboBox  ItemsSource="{Binding Basics}" x:Name="CbBasics" SelectedIndex="0"> <!--Выбор SelectedIndex="0" - можно лучше-->
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>

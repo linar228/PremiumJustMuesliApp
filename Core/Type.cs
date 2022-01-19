@@ -4,6 +4,7 @@ using System.Text;
 
 namespace MuesliCore
 {
+    //Нет конструктора класса - можно лучше
     public class Type
     {
         public int ID { get; set; }

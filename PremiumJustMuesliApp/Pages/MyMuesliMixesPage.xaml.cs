@@ -19,6 +19,8 @@ namespace PremiumJustMuesliApp.Pages
     /// <summary>
     /// Interaction logic for MyMuesliMixesPage.xaml
     /// </summary>
+	
+    //Страница сделана хорошо
     public partial class MyMuesliMixesPage : Page
     {
         public MyMuesliMixesPage()

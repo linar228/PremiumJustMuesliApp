@@ -19,6 +19,8 @@ namespace PremiumJustMuesliApp.Pages
     /// <summary>
     /// Interaction logic for OrderPage.xaml
     /// </summary>
+
+    //Страница сделана хорошо
     public partial class OrderPage : Page
     {
         public OrderPage()
